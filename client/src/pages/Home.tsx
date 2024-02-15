@@ -33,7 +33,10 @@ function Home() {
   },[status])
 
   if (isLoading) return <LoadingComponent/>
-  if (!data?.success || isError ) return <h1 className="text-center p-3 font-bol text-red-600">{error?.message || data?.message}</h1>
+  if (!data?.success || isError ) return <>
+  <h1 className="text-center p-3 font-bol text-red-600">{error?.message || data?.message}</h1>
+ <CreateNoteButton/>
+  </> 
   
   return (
     <main className="h-[100%] w-[100dvw] bg-color-sixty">
