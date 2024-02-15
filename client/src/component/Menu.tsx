@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { setUserInRedux } from "../utilities/redux/user";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import { Server } from "../utilities/Server";
 
 type Props = {};
 
@@ -15,7 +16,7 @@ function Menu({}: Props) {
   const dispatch = useAppDispatch();
 
   const openGoogleAuth = () => {
-    window.open("http://localhost:3000/auth/google", "_self");
+    window.open(`${Server}/auth/google`, "_self");
   };
 
   const { data, status } = useQuery({
@@ -56,7 +57,7 @@ function Menu({}: Props) {
           src="https://img.freepik.com/free-vector/notebook-pencil-hand-drawn-style_1284-1212.jpg?size=338&ext=jpg&ga=GA1.1.1264180380.1678956544&semt=ais"
         />
       </Link>
-      
+
       {isUserLogin ? (
         <div className="flex items-center gap-2">
           <img

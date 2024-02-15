@@ -1,9 +1,10 @@
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { Server } from "../Server";
 
 export const createNote = async (note: string) => {
   const res = await fetch(
-    `http://localhost:3000/notes/note?token=${Cookies.get("token")}`,
+    `${Server}/notes/note?token=${Cookies.get("token")}`,
     {
       method: "POST",
       headers: {
@@ -19,7 +20,7 @@ export const createNote = async (note: string) => {
 export const updateNote = async (note: string, id: string | undefined) => {
   if (!id || !note) return toast.error("id not provite");
   const res = await fetch(
-    `http://localhost:3000/notes/note?token=${Cookies.get("token")}&id=${id}`,
+    `${Server}/notes/note?token=${Cookies.get("token")}&id=${id}`,
     {
       method: "PUT",
       headers: {
@@ -33,9 +34,7 @@ export const updateNote = async (note: string, id: string | undefined) => {
 };
 
 export const getNotes = async () => {
-  const res = await fetch(
-    `http://localhost:3000/notes/note?token=${Cookies.get("token")}`,
-  );
+  const res = await fetch(`${Server}/notes/note?token=${Cookies.get("token")}`);
   const data = await res.json();
   return data;
 };
@@ -43,7 +42,7 @@ export const getNotes = async () => {
 export const getSingleNote = async (id: string | undefined) => {
   if (!id) return;
   const res = await fetch(
-    `http://localhost:3000/notes/note/single?token=${Cookies.get("token")}&id=${id}`,
+    `${Server}/notes/note/single?token=${Cookies.get("token")}&id=${id}`,
   );
   const data = await res.json();
   return data;

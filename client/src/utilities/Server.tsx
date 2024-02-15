@@ -1,0 +1,1 @@
+export const Server:string = "https://note-app-server-lzvm.onrender.com"
